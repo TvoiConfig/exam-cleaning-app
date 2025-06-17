@@ -4,4 +4,4 @@ from .models import ApplicationModel
 
 @admin.register(ApplicationModel)
 class ApplicationModelAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("id", "author", "status",)

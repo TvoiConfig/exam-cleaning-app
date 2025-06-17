@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои заявки{% endblock %}
+
+{% block content %}
+<a href="{% url 'create_application' %}" class="btn btn-primary">Новая заявка</a>
+{% for a in applications %}
+    <p>Адресс: {{ a.address }}</p>
+    <p>Тип: {{ a.get_service_type_display }}</p>
+    <p>Статус: {{ a.get_status_display }}</p>
+    <br/>
+{% empty %}
+    <p>У вас пока нет заявок.</p>
+{% endfor %}
+{% endblock %}
