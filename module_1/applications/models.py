@@ -1,4 +1,6 @@
 from django.db import models
+from accounts.models import User
+
 
 SERVICE_CHOICES = [
     ("main", "Общий клининг"),
@@ -13,6 +15,7 @@ PAYMENT_CHOICES = [
 ]
 
 class ApplicationModel(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=100, verbose_name="Адрес")
     contacts = models.CharField(max_length=100, verbose_name="Контактные данные")
     service_type = models.CharField(
@@ -31,3 +34,6 @@ class ApplicationModel(models.Model):
     class Meta:
         verbose_name = "Заявка"
         verbose_name_plural = "Заявки"
+        
+    def __str__(self):
+        return f"{self.author} {self.address}"
