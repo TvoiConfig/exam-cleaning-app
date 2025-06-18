@@ -4,16 +4,21 @@
 
 {% block content %}
 
-<form method="post"> {% csrf_token %}
-    {% for f in form %}
-    <label>{{ f.label }}</label>
-        {{ f }}
+<div class="card col-6">
+    <div class="card-body">
+        <form method="post"> {% csrf_token %}
+            {% for f in form %}
+            <div class="mb-3">
+                <label class="form_label">{{ f.label }}</label>
+                {{ f }}
+            </div>
+            {% if f.errors %}
+                <div>{{ f.errors }}</div>
+            {% endif %}
+            {% endfor %}
 
-    {% if f.errors %}
-        <div>{{ f.errors }}</div>
-    {% endif %}
-    {% endfor %}
-
-    <button type="submit">Создать</button>
-</form>
+            <button class="btn btn-primary" type="submit">Создать</button>
+        </form>
+    </div>
+</div>
 {% endblock content %}

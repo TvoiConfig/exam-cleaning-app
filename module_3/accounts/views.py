@@ -7,5 +7,5 @@ from django.urls import reverse_lazy
 class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = "register.html"
-    # success_url = reverse_lazy("home")
+    success_url = reverse_lazy("login")
     
